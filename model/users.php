@@ -9,7 +9,7 @@ function add_user($login, $pass, $level)
 
     $req = $bdd->prepare('INSERT INTO user (userName, password, level) VALUES (:login, :pass, :level ) ');
     $req->bindParam(':login', $login, PDO::PARAM_STR);
-    $req->bindParam(':pass', $pass, PDO::PARAM_STR);
+    $req->bindParam(':pass', sha1($pass), PDO::PARAM_STR);
     $req->bindParam(':level', $level, PDO::PARAM_INT);
     $req->execute();
     $return = $req->fetchAll();
@@ -51,7 +51,7 @@ function get_user($login, $pass)
     
     $req = $bdd->prepare('SELECT id_user, userName, password, level FROM user WHERE userName= :login AND password= :pass ');
     $req->bindParam(':login', $login, PDO::PARAM_STR);
-    $req->bindParam(':pass', $pass, PDO::PARAM_STR);
+    $req->bindParam(':pass', sha1($pass), PDO::PARAM_STR);
     $req->execute();
     $return = $req->fetchAll();
     
