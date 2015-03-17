@@ -47,4 +47,6 @@ function charger_personnage(){
 
 }
 
-
+function test(){
+    echo 'test';
+}
