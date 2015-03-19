@@ -43,9 +43,26 @@ function get_personnages_by_userID($id){
     return $return;
 }
 
-//Supprime un par son id_user associé
+//recupere l'id d'un personnage par son id_user
+function get_personnageID_by_userID($id){
+	global $bdd;
+    $id = (int) $id;
+
+    $req = $bdd->prepare('SELECT id_personnage FROM personnage WHERE user_id_user= :id');
+    $req->bindParam(':id', $id, PDO::PARAM_INT);
+    $req->execute();
+    $return = $req->fetchAll(PDO::FETCH_ASSOC);
+    $return = $return[0]['id_personnage'];
+    
+    return $return;
+}
+
+
+//Supprime un personnage par son id_user associé
 function remove_personnage($id_user)
 {
+	remove_pouvoirs_by_PersoID(get_personnageID_by_userID($id_user));
+
     global $bdd;
 
     $req = $bdd->prepare('DELETE FROM personnage WHERE user_id_user=:id_user');

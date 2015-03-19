@@ -48,10 +48,10 @@ function get_user_by_name($login)
 function get_user($login, $pass)
 {
     global $bdd;
-    
+    $pass = sha1($pass);
     $req = $bdd->prepare('SELECT id_user, userName, password, level FROM user WHERE userName= :login AND password= :pass ');
     $req->bindParam(':login', $login, PDO::PARAM_STR);
-    $req->bindParam(':pass', sha1($pass), PDO::PARAM_STR);
+    $req->bindParam(':pass', $pass, PDO::PARAM_STR);
     $req->execute();
     $return = $req->fetchAll();
     

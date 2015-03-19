@@ -1,4 +1,4 @@
-<div id="cration_personnage_form">
+<div id="creation_personnage_form">
 	<h2>Crée ton personnage !</h2>
 	<form method=POST action="index.php?action=create_pers">
 		Nom : <input type="text" name="nom" value="">
