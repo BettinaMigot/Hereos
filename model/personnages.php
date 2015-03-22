@@ -8,7 +8,7 @@ function add_personnage( $nom, $description, $air, $feu, $terre, $eau, $foudre, 
     resist_Terre, resist_Eau, resist_Foudre, status, quete_id_quete, user_id_user, event_id_event)
  	VALUES ( :nom, 0, 0, :description, :air, :feu, :terre, :eau, :foudre, "Gentil", NULL, :id_user, NULL)');
     $req->bindParam(':nom', $nom, PDO::PARAM_STR);
-    $req->bindParam(':description', $descirption, PDO::PARAM_STR);
+    $req->bindParam(':description', $description, PDO::PARAM_STR);
     $req->bindParam(':air', $air, PDO::PARAM_INT);
     $req->bindParam(':feu', $feu, PDO::PARAM_INT);
     $req->bindParam(':terre', $terre, PDO::PARAM_INT);
@@ -53,6 +53,19 @@ function get_personnageID_by_userID($id){
     $req->execute();
     $return = $req->fetchAll(PDO::FETCH_ASSOC);
     $return = $return[0]['id_personnage'];
+    
+    return $return;
+}
+
+/* Recupere tout les perso ayant le niveau indiqué */
+function get_personnages_by_lvl($lvl){
+	global $bdd;
+    $lvl = (int) $lvl;
+
+    $req = $bdd->prepare('SELECT * FROM personnage WHERE lvl= :lvl');
+    $req->bindParam(':lvl', $lvl, PDO::PARAM_INT);
+    $req->execute();
+    $return = $req->fetchAll(PDO::FETCH_ASSOC);
     
     return $return;
 }

@@ -41,24 +41,27 @@ charger_personnage();
 
 include_once('view/footer.php');
 
-//Si l'user à déja un personnage: affiche le profil
-//sinon affiche le formulaire de création de perso
+//Si l'user à déja un personnage et des pouvoirs : on affiche son profil
+//Sinon affiche le formulaire de création de perso ou de création de pouvoirs
 function charger_personnage(){
 	$monPerso = get_personnages_by_userID($_SESSION['id']);
-	//var_dump($monPerso);
-	if ( !empty($monPerso) ) {
-		echo "Ton personnage s'appelle : ".$monPerso[0]['name'];
-		echo "<br><a href='index.php?action=remove_pers'>Supprimer personnage</a>";
-        
+	if ( !empty($monPerso) )
+    {
+		$monPerso=$monPerso[0];
         $mesPouvoirs = get_pouvoirs_by_PersoID(get_personnageID_by_userID($_SESSION['id'])) ;
-        if (sizeof($mesPouvoirs)==3) {
-            echo "Il faudra afficher les pouvoirs ici";
+        if (sizeof($mesPouvoirs)==3)
+        {            
+            $mesEnnemis = get_personnages_by_lvl($monPerso['lvl']);        
+            include_once('view/display_profil_personnage.php'); 
         }
-        else{
+        else
+        {
             include_once('view/creation_pouvoir.php');
         }
-
 	}	
-	else{ include_once('view/creation_personnage.php');	}
+	else
+    {
+        include_once('view/creation_personnage.php');
+    }
 
 }
