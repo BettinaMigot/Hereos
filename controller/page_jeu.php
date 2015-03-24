@@ -2,6 +2,7 @@
 
 include_once('model/personnages.php');
 include_once('model/pouvoirs.php');
+include_once('model/quests.php');
 if (isset($_GET['action'])) {$action = $_GET['action'];}
 else{$action = null;}
 if (isset($_GET['id'])) {$id = $_GET['id'];}
@@ -26,7 +27,7 @@ switch ($action) {
     case 'disconnect':
     	include_once('model/users.php');
     	disconnect_user();
-    	break;
+    	break; 
     case null:
         
         break;
@@ -52,6 +53,8 @@ function charger_personnage(){
         if (sizeof($mesPouvoirs)>=3)
         {   
             $mesEnnemis = get_personnages_by_lvl($monPerso['lvl']);        
+            $mesQuests = get_quests();
+            var_dump($mesQuests);
             include_once('view/display_profil_personnage.php');
         }
         else

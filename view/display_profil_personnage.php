@@ -39,4 +39,16 @@ echo "</ul>";
 
 echo "<hr>"; /******************************************/
 
+echo "<ul>";
+foreach ($mesQuests as $cle => $quete) {
+	echo "<li>"
+	."<b>".$quete['nom']." - </b>"
+	." XP:".$quete['xp']
+	." - Description : ".$quete['description']
+	."</li>";
+}
+echo "</ul>";
+
+echo "<hr>"; /******************************************/
+
 ?>
