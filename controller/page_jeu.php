@@ -19,7 +19,7 @@ switch ($action) {
     case'create_pouvoir':
     	$success = creation_pouvoir();
         if ($success==1) {
-            header('Location: index.php');
+        header('Location: index.php');
         }
         else{echo "Vous n'avez pas mis 15 points par pouvoirs.";}
     	break;
@@ -49,10 +49,10 @@ function charger_personnage(){
     {
 		$monPerso=$monPerso[0];
         $mesPouvoirs = get_pouvoirs_by_PersoID(get_personnageID_by_userID($_SESSION['id'])) ;
-        if (sizeof($mesPouvoirs)==3)
-        {            
+        if (sizeof($mesPouvoirs)>=3)
+        {   
             $mesEnnemis = get_personnages_by_lvl($monPerso['lvl']);        
-            include_once('view/display_profil_personnage.php'); 
+            include_once('view/display_profil_personnage.php');
         }
         else
         {

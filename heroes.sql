@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Client :  127.0.0.1
--- Généré le :  Jeu 19 Mars 2015 à 14:49
+-- Généré le :  Mar 24 Mars 2015 à 12:34
 -- Version du serveur :  5.6.17
 -- Version de PHP :  5.5.12
 
@@ -59,7 +59,7 @@ CREATE TABLE IF NOT EXISTS `personnage` (
   KEY `fk_personnage_quete1_idx` (`quete_id_quete`),
   KEY `fk_personnage_user1_idx` (`user_id_user`),
   KEY `fk_personnage_event1_idx` (`event_id_event`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=11 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=13 ;
 
 --
 -- Contenu de la table `personnage`
@@ -68,7 +68,8 @@ CREATE TABLE IF NOT EXISTS `personnage` (
 INSERT INTO `personnage` (`id_personnage`, `name`, `xp`, `lvl`, `description`, `resist_Air`, `resist_Feu`, `resist_Terre`, `resist_Eau`, `resist_Foudre`, `status`, `quete_id_quete`, `user_id_user`, `event_id_event`) VALUES
 (4, 'Chouche', 0, 1, 'Mouton à poil raz', '0', '0', '1', '0', '1', 'Gentil', NULL, 2, NULL),
 (6, 'BOB', 0, 0, NULL, '3', '0', '0', '0', '0', 'Gentil', NULL, 193, NULL),
-(7, 'Jean Herbert de la Motte', 0, 0, NULL, '0', '1', '1', '0', '1', 'Gentil', NULL, 194, NULL);
+(7, 'Jean Herbert de la Motte', 0, 0, NULL, '0', '1', '1', '0', '1', 'Gentil', NULL, 194, NULL),
+(12, 'yoyo', 0, 0, 'perso de yoyo', '1', '1', '0', '0', '1', 'Gentil', NULL, 196, NULL);
 
 -- --------------------------------------------------------
 
@@ -77,7 +78,7 @@ INSERT INTO `personnage` (`id_personnage`, `name`, `xp`, `lvl`, `description`, `
 --
 
 CREATE TABLE IF NOT EXISTS `pouvoir` (
-  `id_pouvoir` int(11) NOT NULL,
+  `id_pouvoir` int(11) NOT NULL AUTO_INCREMENT,
   `nom_pouvoir` varchar(45) NOT NULL,
   `air` int(11) NOT NULL,
   `feu` int(11) NOT NULL,
@@ -87,7 +88,16 @@ CREATE TABLE IF NOT EXISTS `pouvoir` (
   `personnage_id_personnage` int(11) NOT NULL,
   PRIMARY KEY (`id_pouvoir`),
   KEY `fk_pouvoir_personnage1_idx` (`personnage_id_personnage`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=11 ;
+
+--
+-- Contenu de la table `pouvoir`
+--
+
+INSERT INTO `pouvoir` (`id_pouvoir`, `nom_pouvoir`, `air`, `feu`, `terre`, `foudre`, `eau`, `personnage_id_personnage`) VALUES
+(8, 'pouvoir 1', 15, 0, 0, 0, 0, 12),
+(9, 'pouvoir 2', 15, 0, 0, 0, 0, 12),
+(10, 'pouvoir 3', 15, 0, 0, 0, 0, 12);
 
 -- --------------------------------------------------------
 
@@ -124,7 +134,7 @@ CREATE TABLE IF NOT EXISTS `user` (
   `password` varchar(45) NOT NULL,
   `level` varchar(45) NOT NULL,
   PRIMARY KEY (`id_user`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=196 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=197 ;
 
 --
 -- Contenu de la table `user`
@@ -145,7 +155,8 @@ INSERT INTO `user` (`id_user`, `userName`, `password`, `level`) VALUES
 (192, 'test', 'bob', '0'),
 (193, 'missImac', 'babebibobu', '0'),
 (194, 'GrosKikiDu41', 'patatedouce', '0'),
-(195, 'TestMdp', '80710b4eddc5b8e62120aa407cbb326a8a111277', '0');
+(195, 'TestMdp', '80710b4eddc5b8e62120aa407cbb326a8a111277', '0'),
+(196, 'yohan', '9d4e1e23bd5b727046a9e3b4b7db57bd8d6ee684', '0');
 
 --
 -- Contraintes pour les tables exportées

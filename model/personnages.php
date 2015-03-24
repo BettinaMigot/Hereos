@@ -53,7 +53,6 @@ function get_personnageID_by_userID($id){
     $req->execute();
     $return = $req->fetchAll(PDO::FETCH_ASSOC);
     $return = $return[0]['id_personnage'];
-    
     return $return;
 }
 
