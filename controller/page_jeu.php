@@ -3,6 +3,7 @@
 include_once('model/personnages.php');
 include_once('model/pouvoirs.php');
 include_once('model/quests.php');
+include_once('model/combat.php');
 if (isset($_GET['action'])) {$action = $_GET['action'];}
 else{$action = null;}
 if (isset($_GET['id'])) {$id = $_GET['id'];}
@@ -28,16 +29,20 @@ switch ($action) {
     	include_once('model/users.php');
     	disconnect_user();
     	break; 
+    case 'combat':
+        combat_jcj();
+        break;     
     case null:
         
         break;
 }
 
 
-
+ 
 include_once('view/header.php');
 
 charger_personnage();
+
 //include_once('view/display_list_personnages.php');
 
 include_once('view/footer.php');
@@ -56,6 +61,7 @@ function charger_personnage(){
             $mesQuests = get_quests();
             var_dump($mesQuests);
             include_once('view/display_profil_personnage.php');
+           
         }
         else
         {

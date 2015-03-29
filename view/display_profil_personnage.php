@@ -7,7 +7,7 @@ echo "<hr>"; /******************************************/
 
 echo "<p>Nom de ton perso : ".$monPerso['name']."</p>";
 echo "<p>Ton niveau : ".$monPerso['lvl']."</p>";
-echo "<a href='index.php?action=remove_pers'>Supprimer personnage</a>";
+
 
 echo "<hr>"; /******************************************/
 
@@ -32,7 +32,8 @@ echo "<ul>";
 foreach ($mesEnnemis as $cle => $ennemi) {
             // On affiche l'ennemi que si ce n'est pas notre propre perso.
             if ($ennemi['id_personnage'] != $monPerso['id_personnage'] ) {
-                echo "<li>".$cle." : ".$ennemi['name']." <i>".$ennemi['description']."</i></li>";    
+                echo "<a href='index.php?action=combat;enemie=".$ennemi['id_personnage']."'> <li>".$cle." : ".$ennemi['name']." <i>".$ennemi['description']."</i></a></li>";
+                
             }            
         }
 echo "</ul>";

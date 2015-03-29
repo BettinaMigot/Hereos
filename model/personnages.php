@@ -85,6 +85,8 @@ function remove_personnage($id_user)
     return $return;
 }
 
+
+
 function creation_personnage(){
 	
 	if (!empty($_POST["nom"])) {
