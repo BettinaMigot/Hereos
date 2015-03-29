@@ -40,12 +40,24 @@ echo "</ul>";
 echo "<hr>"; /******************************************/
 
 echo "<ul>";
-foreach ($mesQuests as $cle => $quete) {
-	echo "<li>"
-	."<b>".$quete['nom']." - </b>"
-	." XP:".$quete['xp']
-	." - Description : ".$quete['description']
-	."</li>";
+
+	
+	
+if($monPerso['quete_id_quete'] != NULL && $diff_date <  $currentQuest[0]["temps"]) {
+	$temps_restant = $currentQuest[0]["temps"] - $diff_date;
+	echo "Vous êtes en train de faire la quête <b> \" " .$currentQuest[0]["nom"] . 
+	    " \"</b>, vous pourrez effectuer une autre quête dans " . $temps_restant . " minutes.";
+}
+
+
+else {
+	foreach ($mesQuests as $cle => $quete) {
+		echo "<li>"
+		."<a href='index.php?action=do_quest&id_quete=".$quete['id_quete']."'> <b>".$quete['nom']." - </b> </a>"
+		." XP:".$quete['xp']
+		." - Description : ".$quete['description']
+		."</li>";
+	}
 }
 echo "</ul>";
 
