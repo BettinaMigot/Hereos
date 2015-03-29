@@ -32,7 +32,8 @@ echo "<ul>";
 foreach ($mesEnnemis as $cle => $ennemi) {
             // On affiche l'ennemi que si ce n'est pas notre propre perso.
             if ($ennemi['id_personnage'] != $monPerso['id_personnage'] ) {
-                echo "<a href='index.php?action=combat;enemie=".$ennemi['id_personnage']."'> <li>".$cle." : ".$ennemi['name']." <i>".$ennemi['description']."</i></a></li>";
+                echo "<li>".$cle." : ".$ennemi['name']." <i>".$ennemi['description']."</i></li>";
+                echo"<a href='index.php?action=combat&amp;enemie=".$ennemi['id_personnage']."'>combat </a>";
                 
             }            
         }
