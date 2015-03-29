@@ -12,12 +12,12 @@ function combat_jcj(){
     }else{
         $sql ="UPDATE personnage SET xp = 20 WHERE user_id_user=$id ";
     }
-    if($test=0){
-        $sql ="UPDATE personnage SET xp = 10 WHERE user_id_user=$id ";
-    }
+    
     return ;
 
-
+echo '<script language="Javascript">
+alert ("coucou." )
+</script>';
 
 }
 

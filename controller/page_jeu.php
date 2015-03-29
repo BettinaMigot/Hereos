@@ -31,9 +31,7 @@ switch ($action) {
     	break; 
     case 'combat':
         combat_jcj();
-        echo '<script language="Javascript">
-alert ("coucou." )
-</script>';
+        
         break;     
     case null:
         
