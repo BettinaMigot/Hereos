@@ -9,6 +9,7 @@ else{$action = null;}
 if (isset($_GET['id'])) {$id = $_GET['id'];}
 else{$id = null;}
 
+
 switch ($action) {
     
     case'create_pers':
@@ -30,8 +31,10 @@ switch ($action) {
     	disconnect_user();
     	break; 
     case 'combat':
-        combat_jcj();
-        
+        if (isset($_GET['enemie'])) {$ennemi = $_GET['enemie'];}
+        else{$ennemi = null;}
+        combat_jcj($_SESSION['id'],$ennemi);
+        /*header('Location: index.php');*/
         break;     
     case null:
         
@@ -60,7 +63,7 @@ function charger_personnage(){
         {   
             $mesEnnemis = get_personnages_by_lvl($monPerso['lvl']);        
             $mesQuests = get_quests();
-            var_dump($mesQuests);
+
             include_once('view/display_profil_personnage.php');
            
         }

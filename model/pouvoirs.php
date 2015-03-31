@@ -40,11 +40,15 @@ function get_pouvoirs_by_PersoID($id){
     global $bdd;
     $id = (int) $id;
 
+    var_dump($id);
     $req = $bdd->prepare('SELECT * FROM pouvoir WHERE personnage_id_personnage = :id ');
     $req->bindParam(':id', $id, PDO::PARAM_INT);
     $req->execute();
 
     $return = $req->fetchAll(PDO::FETCH_ASSOC);
+
+        echo "jen ai marre";
+    var_dump($return);
     
     return $return;
 }

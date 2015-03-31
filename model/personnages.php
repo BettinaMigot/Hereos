@@ -43,16 +43,37 @@ function get_personnages_by_userID($id){
     return $return;
 }
 
+//recupere les resistances du personnage
+function get_resist_by_PersoID($id){
+    global $bdd;
+    $id = (int) $id;
+
+    $req = $bdd->prepare('SELECT resist_Foudre AND resist_Eau AND resist_Terre AND resist_Feu AND resist_Air FROM personnage WHERE personnage_id_personnage = :id ');
+    $req->bindParam(':id', $id, PDO::PARAM_INT);
+    $req->execute();
+
+    $return = $req->fetchAll(PDO::FETCH_ASSOC);
+
+    var_dump($return);
+    
+    return $return;
+}
+
 //recupere l'id d'un personnage par son id_user
 function get_personnageID_by_userID($id){
 	global $bdd;
     $id = (int) $id;
 
+
     $req = $bdd->prepare('SELECT id_personnage FROM personnage WHERE user_id_user= :id');
     $req->bindParam(':id', $id, PDO::PARAM_INT);
     $req->execute();
     $return = $req->fetchAll(PDO::FETCH_ASSOC);
+ 
     $return = $return[0]['id_personnage'];
+
+
+
     return $return;
 }
 
