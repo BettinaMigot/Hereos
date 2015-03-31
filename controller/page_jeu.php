@@ -3,12 +3,14 @@
 include_once('model/personnages.php');
 include_once('model/pouvoirs.php');
 include_once('model/quests.php');
+include_once('model/combat.php');
 if (isset($_GET['action'])) {$action = $_GET['action'];}
 else{$action = null;}
 if (isset($_GET['id'])) {$id = $_GET['id'];}
 else{$id = null;}
 if (isset($_GET['id_quete'])) {$id_quete = $_GET['id_quete'];}
 else{$id_quete = null;}
+
 
 switch ($action) {
     
@@ -30,20 +32,30 @@ switch ($action) {
     	include_once('model/users.php');
     	disconnect_user();
     	break; 
+<<<<<<< HEAD
     case 'do_quest':
         do_quest($id_quete);
         header('Location: index.php');
         break;
+=======
+    case 'combat':
+        if (isset($_GET['enemie'])) {$ennemi = $_GET['enemie'];}
+        else{$ennemi = null;}
+        combat_jcj($_SESSION['id'],$ennemi);
+        /*header('Location: index.php');*/
+        break;     
+>>>>>>> origin/jcjc
     case null:
         
         break;
 }
 
 
-
+ 
 include_once('view/header.php');
 
 charger_personnage();
+
 //include_once('view/display_list_personnages.php');
 
 include_once('view/footer.php');
@@ -62,6 +74,7 @@ function charger_personnage(){
         {   
             $mesEnnemis = get_personnages_by_lvl($monPerso['lvl']);        
             $mesQuests = get_quests();
+<<<<<<< HEAD
             $currentQuest = get_current_quest($monPerso['quete_id_quete']); 
 
             if ($monPerso['quete_id_quete'] != NULL) {
@@ -76,7 +89,11 @@ function charger_personnage(){
                     update_quest($monPerso,$currentQuest);
                 }
             }
+=======
+
+>>>>>>> origin/jcjc
             include_once('view/display_profil_personnage.php');
+           
         }
         else
         {
