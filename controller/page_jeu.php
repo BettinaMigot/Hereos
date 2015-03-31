@@ -3,7 +3,6 @@
 include_once('model/personnages.php');
 include_once('model/pouvoirs.php');
 include_once('model/quests.php');
-include_once('model/combat.php');
 if (isset($_GET['action'])) {$action = $_GET['action'];}
 else{$action = null;}
 if (isset($_GET['id'])) {$id = $_GET['id'];}

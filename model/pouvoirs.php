@@ -72,7 +72,8 @@ function combat_jcj($id,$ennemie){
     $monPerso = get_personnages_by_userID($id);
     $sonPerso = get_personnages_by_userID($ennemie);
 
-    if( isset($mesScores) && isset($mesPouvoirs) ){
+
+    if( !empty($sesPouvoirs) && !empty($mesPouvoirs) && !empty($monPerso) && !empty($sonPerso) ){
         $monScore=$mesPouvoirs[0]['feu']*$sonPerso[0]['resist_Feu']+$mesPouvoirs[0]['air']*$sonPerso[0]['resist_Air']+$mesPouvoirs[0]['terre']*$sonPerso[0]['resist_Terre']+$mesPouvoirs[0]['foudre']*$sonPerso[0]['resist_Foudre']+$mesPouvoirs[0]['eau']*$sonPerso[0]['resist_Eau'];
         $sonScore=$sesPouvoirs[0]['feu']*$monPerso[0]['resist_Feu']+$sesPouvoirs[0]['air']*$monPerso[0]['resist_Air']+$sesPouvoirs[0]['terre']*$monPerso[0]['resist_Terre']+$sesPouvoirs[0]['foudre']*$monPerso[0]['resist_Foudre']+$sesPouvoirs[0]['eau']*$monPerso[0]['resist_Eau'];
 
@@ -80,9 +81,17 @@ function combat_jcj($id,$ennemie){
             $req = $bdd->prepare("UPDATE personnage SET xp = xp + 10 WHERE user_id_user = :id ");
             $req->bindParam(':id', $id, PDO::PARAM_INT);
             $req->execute();
+            echo "<script> alert('Gagné !') </script>";
             return 1;     
         }
+        else{
+            echo "<script> alert('Perdu !') </script>";
+        }
     }
+    else{
+        echo "<script> alert('Tu ne peux pas attaquer ce perso !') </script>";
+    }
+
     return 0;
 
 }
