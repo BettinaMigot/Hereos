@@ -7,7 +7,8 @@ echo "<hr>"; /******************************************/
 
 echo "<p>Nom de ton perso : ".$monPerso['name']."</p>";
 echo "<p>Ton niveau : ".$monPerso['lvl']."</p>";
-
+echo "<p>Ton xp : ".$monPerso['xp']."</p>";
+echo "<a href='index.php?action=remove_pers'>Supprimer personnage</a>";
 
 echo "<hr>"; /******************************************/
 

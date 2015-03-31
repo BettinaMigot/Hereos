@@ -32,19 +32,17 @@ switch ($action) {
     	include_once('model/users.php');
     	disconnect_user();
     	break; 
-<<<<<<< HEAD
+
     case 'do_quest':
         do_quest($id_quete);
         header('Location: index.php');
         break;
-=======
     case 'combat':
         if (isset($_GET['enemie'])) {$ennemi = $_GET['enemie'];}
         else{$ennemi = null;}
         combat_jcj($_SESSION['id'],$ennemi);
         /*header('Location: index.php');*/
         break;     
->>>>>>> origin/jcjc
     case null:
         
         break;
@@ -74,7 +72,7 @@ function charger_personnage(){
         {   
             $mesEnnemis = get_personnages_by_lvl($monPerso['lvl']);        
             $mesQuests = get_quests();
-<<<<<<< HEAD
+
             $currentQuest = get_current_quest($monPerso['quete_id_quete']); 
 
             if ($monPerso['quete_id_quete'] != NULL) {
@@ -89,11 +87,7 @@ function charger_personnage(){
                     update_quest($monPerso,$currentQuest);
                 }
             }
-=======
-
->>>>>>> origin/jcjc
             include_once('view/display_profil_personnage.php');
-           
         }
         else
         {
