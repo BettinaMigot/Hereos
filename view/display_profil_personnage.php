@@ -1,6 +1,6 @@
 <?php 
-
-
+echo "<hr>";
+echo "<div class='row'>";
 echo "<h2>Bienvenue sur la page de profil de ton personnage !</h2>";
 
 echo "<hr>"; /******************************************/
@@ -11,7 +11,7 @@ echo "<a href='index.php?action=remove_pers'>Supprimer personnage</a>";
 
 echo "<hr>"; /******************************************/
 
-echo "<h3>Liste de tes pouvoirs</h3>";
+echo "<h3>Tes pouvoirs</h3>";
 echo "<ul>";
 foreach ($mesPouvoirs as $cle => $pouvoir) {
 	echo "<li>"
@@ -27,7 +27,7 @@ echo "</ul>";
 
 echo "<hr>"; /******************************************/
 
-echo "<h3>Liste des personnages que tu peux attaquer : (même level)</h3>";
+echo "<h3>Personnages que tu peux attaquer (même level)</h3>";
 echo "<ul>";
 foreach ($mesEnnemis as $cle => $ennemi) {
             // On affiche l'ennemi que si ce n'est pas notre propre perso.
@@ -39,9 +39,11 @@ echo "</ul>";
 
 echo "<hr>"; /******************************************/
 
+echo "<h3>Tes quêtes</h3>";
+
 echo "<ul>";
 
-	
+
 	
 if($monPerso['quete_id_quete'] != NULL && $diff_date <  $currentQuest[0]["temps"]) {
 	$temps_restant = $currentQuest[0]["temps"] - $diff_date;
@@ -62,5 +64,7 @@ else {
 echo "</ul>";
 
 echo "<hr>"; /******************************************/
+
+echo "</div>";
 
 ?>

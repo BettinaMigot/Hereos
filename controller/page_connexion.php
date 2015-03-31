@@ -19,7 +19,7 @@ switch ($action) {
 
 include_once('view/header.php');
 include_once('view/connexion_form.php');
-include_once('view/register_form.php');
+/*include_once('view/register_form.php');*/
 display_users();
 include_once('view/footer.php');
 

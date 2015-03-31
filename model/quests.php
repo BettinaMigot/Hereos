@@ -49,9 +49,6 @@ function do_quest($id_quete){
 function update_quest($monPerso,$currentQuest) {
 	global $bdd;
 
-	print_r($currentQuest);
-
-
 	$req = $bdd->prepare("UPDATE personnage SET quete_id_quete = NULL, beggining_quest = NULL, xp = xp + " . $currentQuest[0]['xp']." WHERE id_personnage = ". $monPerso["id_personnage"]);
 	$req->execute();
 
