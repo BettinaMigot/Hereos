@@ -32,9 +32,18 @@ echo "<h3>Personnages que tu peux attaquer (même level)</h3>";
 echo "<ul>";
 foreach ($mesEnnemis as $cle => $ennemi) {
             // On affiche l'ennemi que si ce n'est pas notre propre perso.
-            if ($ennemi['id_personnage'] != $monPerso['id_personnage'] ) {
+            if ($ennemi['id_personnage'] != $monPerso['id_personnage']) {
+               if ($ennemi['farm'] == 0) {               
                 echo "<li>".$cle." : ".$ennemi['name']." <i>".$ennemi['description']."</i></li>";
                 echo"<a href='index.php?action=combat&amp;enemie=".$ennemi['user_id_user']."'>combat </a>";
+                }
+                else
+                {
+                	incremente_farm($ennemi['user_id_user']);
+                	if ($ennemi['farm'] >= 3) {
+                	reinitialise_farm($ennemi['user_id_user']);	
+                	}
+                }	
                 
             }            
         }
@@ -64,6 +73,24 @@ else {
 		."</li>";
 	}
 }
+echo "</ul>";
+
+echo "<hr>"; /******************************************/
+
+/**Classement par xp **/
+echo "<ul>";
+
+	include_once('classement_xp.php');
+
+echo "</ul>";
+
+echo "<hr>"; /******************************************/
+
+/**Classement par kill **/
+echo "<ul>";
+
+	include_once('classement_kills.php');
+
 echo "</ul>";
 
 echo "<hr>"; /******************************************/

@@ -31,6 +31,29 @@ function get_personnages(){
     return $return;
 }
 
+// Recupere tout les personnages par ordre d'xp
+function get_personnages_claasement_xp(){
+	global $bdd;
+
+    $req = $bdd->prepare('SELECT * FROM personnage ORDER BY xp DESC;');
+    $req->execute();
+    $return = $req->fetchAll(PDO::FETCH_ASSOC);
+
+    return $return;
+}
+
+// Recupere tout les personnages par ordre de kill 
+function get_personnages_claasement_kill(){
+	global $bdd;
+
+    $req = $bdd->prepare('SELECT * FROM personnage ORDER BY kills DESC;');
+    $req->execute();
+    $return = $req->fetchAll(PDO::FETCH_ASSOC);
+
+    return $return;
+}
+
+
 function get_personnages_by_userID($id){
 	global $bdd;
     $id = (int) $id;
@@ -89,6 +112,28 @@ function get_personnages_by_lvl($lvl){
     
     return $return;
 }
+
+//Augmente de un le farm d'un joueur 
+function incremente_farm($ennemie){
+	global $bdd;
+    $ennemie = (int) $ennemie;
+
+    $req = $bdd->prepare('UPDATE personnage SET farm = farm +1 WHERE user_id_user= :ennemie');
+    $req->bindParam(':ennemie', $ennemie, PDO::PARAM_INT);
+    $req->execute();  
+
+   
+}
+
+function reinitialise_farm($ennemie){
+	global $bdd;
+    $ennemie = (int) $ennemie;
+
+    $req = $bdd->prepare('UPDATE personnage SET farm = 0 WHERE user_id_user= :ennemie');
+    $req->bindParam(':ennemie', $ennemie, PDO::PARAM_INT);
+    $req->execute();  
+}
+
 
 
 //Supprime un personnage par son id_user associé

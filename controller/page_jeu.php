@@ -41,6 +41,7 @@ switch ($action) {
         else{$ennemi = null;}
         combat_jcj($_SESSION['id'],$ennemi);
         /*header('Location: index.php');*/
+        
         break;     
     case null:
         

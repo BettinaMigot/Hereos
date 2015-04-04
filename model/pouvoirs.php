@@ -78,9 +78,12 @@ function combat_jcj($id,$ennemie){
         $sonScore=$sesPouvoirs[0]['feu']*$monPerso[0]['resist_Feu']+$sesPouvoirs[0]['air']*$monPerso[0]['resist_Air']+$sesPouvoirs[0]['terre']*$monPerso[0]['resist_Terre']+$sesPouvoirs[0]['foudre']*$monPerso[0]['resist_Foudre']+$sesPouvoirs[0]['eau']*$monPerso[0]['resist_Eau'];
 
         if($monScore<=$sonScore){
-            $req = $bdd->prepare("UPDATE personnage SET xp = xp + 10 WHERE user_id_user = :id ");
+            $req = $bdd->prepare("UPDATE personnage SET xp = xp + 10, kills= kills + 1  WHERE user_id_user = :id ");
             $req->bindParam(':id', $id, PDO::PARAM_INT);
             $req->execute();
+            $req2 = $bdd->prepare("UPDATE personnage SET farm = farm +1  WHERE user_id_user = :ennemie ");
+            $req2->bindParam(':ennemie', $ennemie, PDO::PARAM_INT);
+            $req2->execute();
             echo "<script> alert('Gagné !') </script>";
             return 1;     
         }
