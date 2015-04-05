@@ -1,5 +1,4 @@
 <?php 
-echo "<hr>";
 echo "<div class='row'>";
 echo "<h2>Bienvenue sur la page de profil de ton personnage !</h2>";
 
@@ -34,7 +33,7 @@ foreach ($mesEnnemis as $cle => $ennemi) {
             // On affiche l'ennemi que si ce n'est pas notre propre perso.
             if ($ennemi['id_personnage'] != $monPerso['id_personnage']) {
                if ($ennemi['farm'] == 0) {               
-                echo "<li>".$cle." : ".$ennemi['name']." <i>".$ennemi['description']."</i></li>";
+                echo "<li>".$cle." : ".$ennemi['name']." <i> - \"".$ennemi['description']."\"</i></li>";
                 echo"<a href='index.php?action=combat&amp;enemie=".$ennemi['user_id_user']."'>combat </a>";
                 }
                 else
@@ -54,7 +53,6 @@ echo "<hr>"; /******************************************/
 echo "<h3>Tes quêtes</h3>";
 
 echo "<ul>";
-
 
 	
 if($monPerso['quete_id_quete'] != NULL && $diff_date <  $currentQuest[0]["temps"]) {
@@ -78,21 +76,39 @@ echo "</ul>";
 echo "<hr>"; /******************************************/
 
 /**Classement par xp **/
-echo "<ul>";
+?>
+	<div class="liste_personnages">
+		<h3>Classement par xp</h3>
 
-	include_once('classement_xp.php');
-
-echo "</ul>";
+		<?php 
+			foreach($ennemisXpRank as $cle => $perso)
+			{	
+				echo ($cle+1).") " ;					
+				echo $perso['name']. " : "  ;
+				echo $perso['xp']. " xp" ;
+				echo  "<br />";	
+			}
+		 ?>			
+	</div>
+<?php 
 
 echo "<hr>"; /******************************************/
 
 /**Classement par kill **/
-echo "<ul>";
-
-	include_once('classement_kills.php');
-
-echo "</ul>";
-
+?>
+	<div class="liste_personnages">
+		<h3>Classement par kill</h3>
+		<?php 
+			foreach($ennemisKillsRank as $cle => $perso)
+			{	
+				echo ($cle+1).") " ;					
+				echo $perso['name']. " : "  ;
+				echo $perso['kills']. "kills" ;
+				echo  "<br />";	
+			}
+		 ?>
+	</div>
+<?php 
 echo "<hr>"; /******************************************/
 
 echo "</div>";

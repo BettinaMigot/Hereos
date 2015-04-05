@@ -32,7 +32,7 @@ function get_personnages(){
 }
 
 // Recupere tout les personnages par ordre d'xp
-function get_personnages_claasement_xp(){
+function get_personnages_classement_xp(){
 	global $bdd;
 
     $req = $bdd->prepare('SELECT * FROM personnage ORDER BY xp DESC;');
@@ -43,7 +43,7 @@ function get_personnages_claasement_xp(){
 }
 
 // Recupere tout les personnages par ordre de kill 
-function get_personnages_claasement_kill(){
+function get_personnages_classement_kill(){
 	global $bdd;
 
     $req = $bdd->prepare('SELECT * FROM personnage ORDER BY kills DESC;');

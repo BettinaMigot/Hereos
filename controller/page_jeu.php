@@ -70,7 +70,9 @@ function charger_personnage(){
         $mesPouvoirs = get_pouvoirs_by_PersoID(get_personnageID_by_userID($_SESSION['id'])) ;
         if (sizeof($mesPouvoirs)>=3)
         {   
-            $mesEnnemis = get_personnages_by_lvl($monPerso['lvl']);        
+            $mesEnnemis = get_personnages_by_lvl($monPerso['lvl']);
+            $ennemisXpRank = get_personnages_classement_xp();        
+            $ennemisKillsRank = get_personnages_classement_kill();        
             $mesQuests = get_quests();
 
             $currentQuest = get_current_quest($monPerso['quete_id_quete']); 

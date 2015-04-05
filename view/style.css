@@ -59,12 +59,13 @@ h2{
 header{
 	background-color: #333;
 	color: white;
-	height: 50px;
+	height: 75px;
 }
 header #session{
 	position: absolute;
-	top: 15px;
+	top: 25px;
 	right: 30px;
+
 }
 header #session a{
 	color: white;
@@ -78,10 +79,10 @@ nav a{
 	font-family: 'Sigmar One', cursive;
 	display: inline-block;
 	text-decoration: none;
-	color: orange;
-	font-size:30px;
+	color: #fff;
+	font-size : 50px;
 	text-align: center;
-	padding: 10px;
+	padding: 0px;
 }
 
 .affichage_perso{
@@ -492,7 +493,9 @@ select {
   width: 100%; }
 
 .row {
-  width: 100%;
+  background-color: rgba(255,255,255,0.7);
+  width: 70%;
+  padding: 20px;
   margin-left: auto;
   margin-right: auto;
   margin-top: 0;
